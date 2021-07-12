@@ -5,6 +5,12 @@ import "./styles.scss";
 
 function App() {
   const excalidrawRef = useRef(null);
+  const url = window.location.href;
+  const idx = url.indexOf("#room=");
+  const room = idx !== -1 ? url.substring(idx + "#room=".length) : "";
+
+  console.log(room);
+  console.log(url);
 
   useEffect(() => {
     const onHashChange = () => {
@@ -21,7 +27,7 @@ function App() {
   }, []);
 
   setInterval(async () => {
-    if (excalidrawRef.current) {
+    if (excalidrawRef.current && room) {
       const blob = await exportToBlob({
         elements: excalidrawRef.current.getSceneElements(),
         mimeType: "image/png",
@@ -31,7 +37,7 @@ function App() {
         },
       });
 
-      savescene("lebhai", blob);
+      savescene(room, blob);
     }
   }, 10000);
 
