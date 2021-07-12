@@ -2,6 +2,9 @@ const express = require("express");
 const app = express();
 const uploadScene = require("./multer-middleware");
 const cors = require("cors");
+const fs = require("fs");
+const util = require("util");
+const readdir = util.promisify(fs.readdir);
 
 app.use(express.static("public"));
 app.use(express.json());
@@ -15,6 +18,12 @@ app.post("/uploadscene", uploadScene.single("scene"), (req, res) => {
   const file = req.file;
   if (!file) return res.status(400).send("Please upload a file");
   res.status(200).send("uploaded successfully.");
+});
+
+app.get("/scene", async (req, res) => {
+  let scenes = await readdir("./public/scenes/");
+  scenes = scenes.map((file) => file.slice(0, -4));
+  res.status(200).send(scenes);
 });
 
 const port = process.env.PORT || 8000;

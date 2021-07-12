@@ -14,7 +14,7 @@ const fileFilter = (req, file, cb) => {
   if (allowedFileTypes.includes(file.mimetype)) {
     cb(null, true);
   } else {
-    cb(new Error("only files of type png are allowed."), false);
+    cb(new Error("only files of type png are allowed.").message, false);
   }
 };
 
