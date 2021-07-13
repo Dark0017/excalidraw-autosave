@@ -7,10 +7,7 @@ function App() {
   const excalidrawRef = useRef(null);
   const url = window.location.href;
   const idx = url.indexOf("#room=");
-  const room = idx !== -1 ? url.substring(idx + "#room=".length) : "";
-
-  console.log(room);
-  console.log(url);
+  const room = idx !== -1 ? url.substring(idx + "#room=".length) : "default";
 
   useEffect(() => {
     const onHashChange = () => {
@@ -27,7 +24,7 @@ function App() {
   }, []);
 
   setInterval(async () => {
-    if (excalidrawRef.current && room) {
+    if (excalidrawRef.current) {
       const blob = await exportToBlob({
         elements: excalidrawRef.current.getSceneElements(),
         mimeType: "image/png",
