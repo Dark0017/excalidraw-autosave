@@ -51,16 +51,9 @@ ___
 ## Usage
 **1.** Open a terminal inside the local repository and execute the following commands:
 ```bash
-npm start
+npm run dev
 ``` 
-**2.** Open another terminal inside the local repository and execute the following commands:
-```bash
-cd client
-``` 
-```bash
-npm start
-``` 
-**3.** The website should now open inside a new tab in your default browser, and can be accessed from anywhere in your local machine at the address `http://localhost:3000/` as long as the above command is still running. <br/>
+**2.** The website should now open inside a new tab in your default browser, and can be accessed from anywhere in your local machine at the address `http://localhost:3000/` as long as the above command is still running. <br/>
 
 ***
 **NOTE:**<br/><br/>
