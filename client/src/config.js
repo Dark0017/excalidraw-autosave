@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const http = axios.create({
-  baseURL: process.env.REACT_APP_BACKEND_URL || "http://localhost:8000",
+  baseURL: `http://localhost:${process.env.PORT ? process.env.PORT : 8000}`,
   timeout: 5000,
   headers: {
     "Content-Type": "application/json",

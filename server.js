@@ -20,10 +20,10 @@ app.post("/uploadscene", uploadScene.single("scene"), (req, res) => {
   res.status(200).send("uploaded successfully.");
 });
 
-app.get("/scene", async (req, res) => {
+app.get("/scenelist", async (req, res) => {
   let scenes = await readdir("./public/scenes/");
   scenes = scenes.map((file) => file.slice(0, -4));
-  res.status(200).send(scenes);
+  return res.status(200).send(scenes);
 });
 
 const port = process.env.PORT || 8000;

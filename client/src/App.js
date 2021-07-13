@@ -1,10 +1,12 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Excalidraw, { exportToBlob } from "@excalidraw/excalidraw";
 import savescene from "./savescene";
+import axios from "./config";
 import "./styles.scss";
 
 function App() {
   const excalidrawRef = useRef(null);
+  const [scenes, setScenes] = useState([]);
   const url = window.location.href;
   const idx = url.indexOf("#room=");
   const room = idx !== -1 ? url.substring(idx + "#room=".length) : "default";
@@ -47,6 +49,19 @@ function App() {
           UIOptions={{ canvasActions: { changeViewBackgroundColor: false } }}
         />
       </div>
+
+      <button
+        onClick={async () => setScenes((await axios.get("/scenelist")).data)}
+      >
+        {" "}
+        Scene List{" "}
+      </button>
+
+      <ul>
+        {scenes.map((room) => (
+          <li key={room}> {room} </li>
+        ))}
+      </ul>
     </>
   );
 }
