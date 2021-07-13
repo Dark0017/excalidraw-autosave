@@ -64,6 +64,6 @@ npm start
 
 ***
 **NOTE:**<br/><br/>
-Changes made in the `http://localhost:3000` won't be saved anywhere, to save changes use `http://localhost:3000/#room=<ROOM_NAME>`.<br/>
-(eg. `http://localhost:3000/#room=work` will autosave scenes at server in png format as work.png)
+Changes made in the `http://localhost:3000` will be saved as `default.png`, to save changes based on room name use `http://localhost:3000/#room=<ROOM_NAME>`.<br/>
+(eg. `http://localhost:3000/#room=work` will autosave scenes as `work.png`)
 ***
